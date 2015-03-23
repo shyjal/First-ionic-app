@@ -1,0 +1,16 @@
+<ion-view view-title="Tickets">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="ticket in tickets" type="item-text-wrap" href="#/tab/ticket/{{ticket.id}}">
+        <img ng-src="{{ticket.face}}">
+        <h2>{{ticket.content}}</h2>
+        <p>{{ticket.name}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(ticket)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
