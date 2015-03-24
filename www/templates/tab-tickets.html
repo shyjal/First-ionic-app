@@ -1,16 +1,52 @@
 <ion-view view-title="Tickets">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="ticket in tickets" type="item-text-wrap" href="#/tab/ticket/{{ticket.id}}">
-        <img ng-src="{{ticket.face}}">
-        <h2>{{ticket.content}}</h2>
-        <p>{{ticket.name}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    <script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view ng-init="newticket={priority:5,content:'',assign:'Anuraj'};">
+            <ion-header-bar class="bar bar-header bar-assertive">
+                <h1 class="title">New Ticket</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="padding">
+                <div class="list">
+                    <label class="item item-input">
 
-        <ion-option-button class="button-assertive" ng-click="remove(ticket)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+                        <input type="text" ng-model="newticket.content" placeholder="Ticket Issue">
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Assignee
+                        </div>
+                        <select ng-model="newticket.assign">
+                            <option>Anuraj</option>
+                            <option>Shaikh</option>
+                        </select>
+                    </label>
+                    <label class="item range range-assertive">
+                        <div class="input-label">Priority</div>
+                        <input type="range" ng-model="newticket.priority" " name="volume" min="0" max="10" value="5">{{newticket.priority}}
+                    </label>
+                    <button class="button button-full button-assertive" ng-click="addTicket(newticket);">Create</button>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+    <ion-content>
+        <button class="button button-block button-light icon-left ion-compose" ng-click="modal.show()">Create a ticket</button>
+
+        <div class="padding item-divider">Activities</div>
+        <ion-list>
+
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="ticket in tickets" type="item-text-wrap" href="#/tab/ticket/{{ticket.id}}">
+                <img ng-src="{{ticket.face}}">
+                <h2>{{ticket.content}}</h2>
+                <p>Priority : {{ticket.priority}}</p>
+                <p>Assignee : {{ticket.assign}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(ticket)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
