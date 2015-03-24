@@ -22,9 +22,9 @@
                     </label>
                     <label class="item range range-assertive">
                         <div class="input-label">Priority</div>
-                        <input type="range" ng-model="newticket.priority" " name="volume" min="0" max="10" value="5">{{newticket.priority}}
+                        <input type="range" ng-model="newticket.priority" name="volume" min="0" max="10" value="5">{{newticket.priority}}
                     </label>
-                    <button class="button button-full button-assertive" ng-click="addTicket(newticket);">Create</button>
+                    <button class="button button-full button-assertive" ng-click="addTicket(newticket);newticket={priority:5,content:'',assign:'Anuraj'};">Create</button>
                 </div>
             </ion-content>
         </ion-modal-view>
