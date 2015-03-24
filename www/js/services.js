@@ -3,25 +3,25 @@ angular.module('qb.services', [])
 .factory('Tickets', function() {
 
         var tickets = [{
-            id: 0,
+            id: 3,
             assign: 'Shaikh',
             content: 'Test ticket 1',
             priority: 10,
             face: 'https://lh3.googleusercontent.com/-T8mB8-pAClQ/AAAAAAAAAAI/AAAAAAAAAAA/8FqPBi09oeQ/s120-c/photo.jpg'
         }, {
-            id: 1,
+            id: 2,
             assign: 'Anuraj',
             content: 'Test ticket 2',
             priority: 6,
             face: 'https://lh3.googleusercontent.com/-BZGZ8gyR1OI/AAAAAAAAAAI/AAAAAAAAAXQ/A13_s6tHr84/s120-c/photo.jpg'
         }, {
-            id: 2,
+            id: 1,
             assign: 'Anuraj',
             content: 'Test ticket 3',
             priority: 8,
             face: 'https://lh3.googleusercontent.com/-BZGZ8gyR1OI/AAAAAAAAAAI/AAAAAAAAAXQ/A13_s6tHr84/s120-c/photo.jpg'
         }, {
-            id: 3,
+            id: 0,
             assign: 'Shaikh',
             content: 'Test ticket 4',
             priority: 7,
@@ -33,7 +33,7 @@ angular.module('qb.services', [])
                 return tickets;
             },
             add: function(data) {
-                data.id=tickets[tickets.length-1].id+1;
+                data.id=tickets[0].id+1;
                 tickets.unshift(data);
             },
             remove: function(ticket) {
