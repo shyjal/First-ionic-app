@@ -28,6 +28,7 @@ angular.module('qb.services', [])
             face: 'https://lh3.googleusercontent.com/-T8mB8-pAClQ/AAAAAAAAAAI/AAAAAAAAAAA/8FqPBi09oeQ/s120-c/photo.jpg'
         }];
 
+
         return {
             all: function() {
                 return tickets;
@@ -37,6 +38,7 @@ angular.module('qb.services', [])
                 tickets.unshift(data);
             },
             remove: function(ticket) {
+                console.log(ticket);
                 tickets.splice(tickets.indexOf(ticket), 1);
             },
             get: function(ticketId) {
@@ -52,9 +54,11 @@ angular.module('qb.services', [])
     .factory('Activities', function() {
 
         var activities = [{
+            id:1,
             date: '20 Mar 2015',
             content: 'Started building first app'
         }, {
+            id:0,
             date: '19 Mar 2015',
             content: 'Installed ionic framework'
         }];
@@ -64,7 +68,11 @@ angular.module('qb.services', [])
                 return activities;
             },
             add: function(data) {
+                data.id=activities[0].id+1;
                 activities.unshift(data);
+            },
+            remove: function(ticket) {
+                activities.splice(activities.indexOf(ticket), 1);
             },
             get: function(activityId) {
                 for (var i = 0; i < activities.length; i++) {

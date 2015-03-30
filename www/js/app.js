@@ -20,7 +20,7 @@ angular.module('qb', ['ionic', 'qb.controllers', 'qb.services'])
   $stateProvider
 
 
-    .state('tab', {
+  .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
@@ -56,7 +56,15 @@ angular.module('qb', ['ionic', 'qb.controllers', 'qb.services'])
         }
       }
     })
-
+    .state('tab.activity-detail', {
+      url: '/activity/:activityId',
+      views: {
+        'tab-activity': {
+          templateUrl: 'templates/activity-detail.html',
+          controller: 'ActivityDetailCtrl'
+        }
+      }
+    })
 
 
 

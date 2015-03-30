@@ -18,7 +18,7 @@
 
     <div class="list ">
     <div class="padding item-divider">List of activities </div>
-      <div ng-repeat="activity in activities" class="item card padding ">
+      <div ng-repeat="activity in activities" class="item card padding " ng-click="showAction(activity)">
           <h2>{{activity.content}}</h2>
           <p>{{activity.date}}</p>
       </div>

@@ -1,9 +1,37 @@
 angular.module('qb.controllers', [])
 
-.controller('ActivityCtrl', function($scope, Activities) {
+.controller('ActivityCtrl', function($scope, Activities,$state,$ionicActionSheet, $timeout) {
 
     $scope.activities = Activities.all();
 
+
+    $scope.showAction = function(clicked) {
+
+       // Show the action sheet
+       var hideSheet = $ionicActionSheet.show({
+         buttons: [
+           { text: 'View details' }
+         ],
+         destructiveText: 'Delete',
+         titleText: 'Activity',
+         cancelText: 'Cancel',
+         
+         buttonClicked: function(index) {
+            $state.go('tab.activity-detail', {activityId: clicked.id})
+           return true;
+         },
+         destructiveButtonClicked:function(){
+             Activities.remove(clicked);
+           return true;
+         }
+       });
+
+       // For example's sake, hide the sheet after two seconds
+       $timeout(function() {
+         hideSheet();
+       }, 2000);
+
+     };
 
     $scope.addActivity = function(actName) {
 
@@ -54,4 +82,8 @@ angular.module('qb.controllers', [])
 
 .controller('TicketDetailCtrl', function($scope, $stateParams, Tickets) {
     $scope.ticket = Tickets.get($stateParams.ticketId);
+})
+.controller('ActivityDetailCtrl', function($scope, $stateParams, Activities) {
+    $scope.activity = Activities.get($stateParams.activityId);
+
 });
