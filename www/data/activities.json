@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "date": "20 Mar 2015",
+        "content": "Started building first app"
+    },
+    {
+        "id": 0,
+        "date": "19 Mar 2015",
+        "content": "Installed ionic framework"
+    }
+]

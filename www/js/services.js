@@ -1,37 +1,23 @@
 angular.module('qb.services', [])
 
-.factory('Tickets', function() {
+.factory('Tickets', function($http) {
 
-        var tickets = [{
-            id: 3,
-            assign: 'Shaikh',
-            content: 'Test ticket 1',
-            priority: 10,
-            face: 'https://lh3.googleusercontent.com/-T8mB8-pAClQ/AAAAAAAAAAI/AAAAAAAAAAA/8FqPBi09oeQ/s120-c/photo.jpg'
-        }, {
-            id: 2,
-            assign: 'Anuraj',
-            content: 'Test ticket 2',
-            priority: 6,
-            face: 'https://lh3.googleusercontent.com/-BZGZ8gyR1OI/AAAAAAAAAAI/AAAAAAAAAXQ/A13_s6tHr84/s120-c/photo.jpg'
-        }, {
-            id: 1,
-            assign: 'Anuraj',
-            content: 'Test ticket 3',
-            priority: 8,
-            face: 'https://lh3.googleusercontent.com/-BZGZ8gyR1OI/AAAAAAAAAAI/AAAAAAAAAXQ/A13_s6tHr84/s120-c/photo.jpg'
-        }, {
-            id: 0,
-            assign: 'Shaikh',
-            content: 'Test ticket 4',
-            priority: 7,
-            face: 'https://lh3.googleusercontent.com/-T8mB8-pAClQ/AAAAAAAAAAI/AAAAAAAAAAA/8FqPBi09oeQ/s120-c/photo.jpg'
-        }];
-
+        var tickets=[];
+        var promise;
 
         return {
             all: function() {
-                return tickets;
+                
+                promise=$http.get('/data/tickets.json').
+                  success(function(data, status, headers, config) {
+                    tickets=data;
+                    return tickets;
+
+                  }).
+                  error(function(data, status, headers, config) {
+                    
+                  });
+                  return promise;
             },
             add: function(data) {
                 data.id=tickets[0].id+1;
@@ -51,21 +37,23 @@ angular.module('qb.services', [])
             }
         };
     })
-    .factory('Activities', function() {
+    .factory('Activities', function($http) {
 
-        var activities = [{
-            id:1,
-            date: '20 Mar 2015',
-            content: 'Started building first app'
-        }, {
-            id:0,
-            date: '19 Mar 2015',
-            content: 'Installed ionic framework'
-        }];
+        var activities= [];
+        var promise;
 
         return {
             all: function() {
-                return activities;
+                promise=$http.get('/data/activities.json').
+                  success(function(data, status, headers, config) {
+                    activities=data;
+                    return activities;
+
+                  }).
+                  error(function(data, status, headers, config) {
+                    
+                  });
+                return promise;
             },
             add: function(data) {
                 data.id=activities[0].id+1;
