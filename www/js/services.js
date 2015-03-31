@@ -8,7 +8,7 @@ angular.module('qb.services', [])
         return {
             all: function() {
                 
-                promise=$http.get('/data/tickets.json').
+                promise=$http.get('data/tickets.json').
                   success(function(data, status, headers, config) {
                     tickets=data;
                     return tickets;
@@ -44,7 +44,7 @@ angular.module('qb.services', [])
 
         return {
             all: function() {
-                promise=$http.get('/data/activities.json').
+                promise=$http.get('data/activities.json').
                   success(function(data, status, headers, config) {
                     activities=data;
                     return activities;
